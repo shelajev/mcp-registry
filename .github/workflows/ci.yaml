@@ -1,22 +1,22 @@
 on:
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   validate-servers:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0 # Needed for diffing
 
       - name: Install Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
         with:
           cache-dependency-path: go.sum
           go-version-file: go.mod
 
       - name: Install Task
-        uses: arduino/setup-task@v2
+        uses: arduino/setup-task@b91d5d2c96a56797b48ac1e0e89220bf64044611 # v2
         with:
           version: 3.x
           repo-token: ${{ secrets.GITHUB_TOKEN }}
